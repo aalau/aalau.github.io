@@ -1,0 +1,140 @@
+/* 
+.navbar {
+    background-color: #333;
+    overflow: hidden;
+    position: fixed;
+    
+    width: 100%;
+    height: 10%;
+  }
+  
+  
+  .navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 6px 8px;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  
+  .navbar a:hover {
+    background-color: #5cb0e6;
+    color: black;
+  }
+
+  .navbar #icon {
+    
+  }
+  
+
+body, html {
+    height: 100%;
+  }
+  
+  .layer {
+    background-color: rgba(34, 3, 49, 0.322);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90.5%;
+  }
+  .curved-rec {
+      background-color: rgba(200, 200, 200, 0.98);
+      position: relative;
+      border-radius: 25px;
+      left: 7.5%;
+      right: 7.5%;
+      width: 95%;
+  }
+.content{
+    position: relative;
+      border-radius: 25px;
+      left: 3%;
+      padding: 5%;
+      width: 95%;
+      height: 90.5%; 
+}
+.resize {
+    width: fill;
+    height: fill;
+    border-radius: 25px;
+    padding: 10px;
+}
+
+.resize {
+    width: auto;
+    height: auto;
+    border-radius: 25px;
+    padding: 10px;
+}
+
+.title {
+    text-align: center;
+    color: white;
+}
+
+.title:hover h4 {
+    color: red;
+    color: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet);
+    color: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
+    color: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
+    color: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
+    
+}
+
+#grad1 {
+    background: red;
+    background: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet);
+    background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
+    background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
+    background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 20vw;
+}
+*/
+body {
+  background-color: grey;
+  background-image: url(https://images.pexels.com/photos/1537008/pexels-photo-1537008.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  background-size: no-repeat;
+  background-position: center;
+  font-family: 'Josefin Sans', sans-serif;
+}
+#content {
+  text-align: center;
+  padding-top: 25%;
+
+  text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+               0px 8px 13px rgba(0,0,0,0.2),
+               0px 18px 23px rgba(0,0,0,0.1);
+}
+h1, h2, h3 {
+  color: black;
+  font-weight: 700;
+}
+h1 {
+  font-size: 5em;
+}
+
+html {
+  height: 100%;
+}
+.mynav{
+  background-color: lightgrey;
+  opacity: 15%;
+}
+#title{
+  font-size: 40px;
+}
+.navbar.transparent.navbar-inverse .navbar-inner {
+  border-width: 0px;
+  -webkit-box-shadow: 0px 0px;
+  box-shadow: 0px 0px;
+  background-color: rgba(0,0,0,0.0);
+  background-image: -webkit-linear-gradient(270deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
+  background-image: linear-gradient(180deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
+}
