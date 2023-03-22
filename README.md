@@ -1,3 +1,6 @@
 # Website
-my professional website, hosted on heroku
-Link: https://dashboard.heroku.com/apps/serene-peak-65609
+Let's build a website using React in a week! 
+
+It should have a form for contacting me, a downloadable resume, and a todo app for my projects.
+
+Let's update the UI to look sleek and modern, get a picture in there, and make it look amazing :)
