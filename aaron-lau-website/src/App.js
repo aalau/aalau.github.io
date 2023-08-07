@@ -11,13 +11,18 @@ const App = () => {
         <Navbar />
         <Brand />
       </div>
+      <center>
+      <div className='top'>
       <Header />
-      <About />
+      </div>
       <Resume />
-      <Projects />
+      <hr></hr>
       <Tako />
+      <hr></hr>
+      <Projects />
       <Contact />
       <Blog />
+      </center>
       <Footer />
     </div>
   )

@@ -57,7 +57,7 @@
             color: var(--grey-color);
             text-decoration: none;
             flex-direction: column;
-            text-transform: uppercase;
+            text-transform: lowercase;
             font-weight: 500;
 
             transition: all 0.3s ease-in-out;
@@ -72,7 +72,7 @@
             }
         }
         button {
-            text-transform: uppercase;
+            text-transform: lowercase;
             font-weight: 600;
             &:hover {
                 color: var(--secondary-color);
@@ -123,4 +123,9 @@
         transform: translateY(2px);
     }
 
+}
+
+.logo{
+    height: auto;
+    max-width: 4em;
 }

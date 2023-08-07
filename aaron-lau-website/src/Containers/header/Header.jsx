@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './header.scss'
 import { motion, AnimatePresence } from 'framer-motion';
-//import { images } from '../../resources';
+//import {  } from '../../resources';
 
 
 const items = [
@@ -45,7 +45,9 @@ const Header = () => {
       // https://codesandbox.io/s/tuw5p?file=/src/Test01.js:579-1005
   return (
     <div className='app_header app_flex'>
+      <div className='app_header_elements'>
       <h1>Aaron Lau</h1>
+      <img src={require('../../resources/aaron-lau-in-center-cropped.jpg')} alt='Software Developer' height='300rem'></img>
       <div className='inline'>
         <div className='text'>I design</div>
         <div className='animate text' style={{ position: "relative" }}>
@@ -62,7 +64,8 @@ const Header = () => {
         </AnimatePresence>
       </div>
     </div>
-    <h2>I am a software engineer.</h2>
+    <h2>Let's build something amazing together!</h2>
+    </div>
     </div>
   )
 }

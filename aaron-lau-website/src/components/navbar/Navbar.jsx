@@ -1,15 +1,16 @@
 import React from 'react';
 import './navbar.scss';
+import Image from '../../resources/A.png';
 
 
 const Navbar = () => {
   return (
     <nav className='app_navbar'>
       <div className='app_navbar-logo'>
-        <img src={"../../resources/logo512.png"} alt="logo" />
+        <img className='logo' src={Image} alt="logo" />
       </div>
       <ul className='app_navbar-links'>
-        {['About','projects','resume']
+        {['projects','writing']
         .map((item) => 
         (<li className='app_flex p-text'
         key={`link-${item}`}>

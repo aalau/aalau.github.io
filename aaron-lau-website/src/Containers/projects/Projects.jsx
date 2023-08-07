@@ -1,9 +1,13 @@
 import React from 'react'
-import './projects.css'
+import './projects.scss'
 
 const Projects = () => {
   return (
-    <div>Projects</div>
+    <div className='app_projects app_flex'>
+      <div>Project 1</div>
+      <div>Project 2</div>
+      <div>Project 3</div>
+    </div>
   )
 }
 
