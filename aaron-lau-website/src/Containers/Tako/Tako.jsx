@@ -128,6 +128,14 @@ const Tako = () => {
       this.head = null;
       this.size = 0;
     }
+    getItems() {
+      let current = this.head;
+      const array = []
+      while(current){
+        array.push(current)
+        current = current.next
+      }
+    }
   }
   class Node{
     constructor(name="", content="", next = null) {
@@ -138,7 +146,7 @@ const Tako = () => {
   }
 
   return (
-    <div className='Tako'>
+    <section className='Tako'>
       <div>Tako: Task Management</div>
       <div className='Input'>
         <form onSubmit={handleSubmit}>
@@ -158,14 +166,15 @@ const Tako = () => {
         
         </div> 
          )}
-      <section className='Kanban'>
-        <div className='Backlog-column'></div>
-        <div className='InProgress-column'></div>
-        <div className='Blocked-column'></div>
-        <div className='Done-column'></div>
+      <section className='DisplayContent'>
+        <LeafList Kanban>
+          <Leaf Backlog></Leaf>
+          <Leaf InProgress></Leaf>
+          <Leaf Done></Leaf>
+        </LeafList>
       </section>
       
-    </div>
+    </section>
   )
 }
 
