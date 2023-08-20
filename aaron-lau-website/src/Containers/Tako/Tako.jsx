@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState, Component } from 'react';
 import ReactDOM from 'react-dom/client'
 import './Tako.scss'
 //import { Task } from './Scenes';
@@ -73,7 +73,7 @@ const Tako = () => {
       this.size = 0;
     }
   }
-  class Leaf{
+  class Leaf extends Component{
     constructor(value, name ="To Do", left = null, right = null){
       this.value = value;
       this.name = name;
@@ -112,7 +112,7 @@ const Tako = () => {
       let current = this.head;
       let previous;
       let count = 0;
-      if (index == 0){
+      if (index === 0){
         this.head = current.next;
       } else {
         while (count < index) {
@@ -137,7 +137,7 @@ const Tako = () => {
       }
     }
   }
-  class Node{
+  class Node extends Component{
     constructor(name="", content="", next = null) {
       this.name = name;
       this.content = content;
@@ -167,11 +167,7 @@ const Tako = () => {
         </div> 
          )}
       <section className='DisplayContent'>
-        <LeafList Kanban>
-          <Leaf Backlog></Leaf>
-          <Leaf InProgress></Leaf>
-          <Leaf Done></Leaf>
-        </LeafList>
+      
       </section>
       
     </section>
@@ -179,3 +175,12 @@ const Tako = () => {
 }
 
 export default Tako
+
+/*
+<LeafList Kanban>
+          <Leaf Backlog></Leaf>
+          <Leaf InProgress></Leaf>
+          <Leaf Done></Leaf>
+        </LeafList>
+
+*/
