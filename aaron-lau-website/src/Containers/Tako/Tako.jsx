@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState, Component } from 'react';
 import ReactDOM from 'react-dom/client'
 import './Tako.scss'
 //import { Task } from './Scenes';
@@ -46,11 +46,7 @@ const Tako = () => {
         </div> 
          )}
       <section className='DisplayContent'>
-        <LeafList Kanban>
-          <Leaf Backlog></Leaf>
-          <Leaf InProgress></Leaf>
-          <Leaf Done></Leaf>
-        </LeafList>
+      
       </section>
       
     </section>
@@ -58,3 +54,12 @@ const Tako = () => {
 }
 
 export default Tako
+
+/*
+<LeafList Kanban>
+          <Leaf Backlog></Leaf>
+          <Leaf InProgress></Leaf>
+          <Leaf Done></Leaf>
+        </LeafList>
+
+*/
