@@ -20,11 +20,58 @@ const Status = Enum({
 })
 
 export default class Task extends React.Component {
-  constructor(Title = 'New task...', prior = Priority.Medium, Description = '', stat = Status.Backlog) {
+  constructor(Title, prior = Priority.Medium, Description = '', stat = Status.Backlog) {
     this.title = Title
     this.priority = prior
     this.description = Description
     this.status = stat
+  }
+  SetStatus(newStatus){
+    switch(newStatus) {
+      case 'BACKLOG':
+        this.status = Status.Backlog;
+        return null;
+      case 'TO DO':
+        this.status = Status.ToDo;
+        return null;
+      case 'IN PROGRESS':
+        this.status = Status.InProgress;
+        return null;
+      case 'BLOCKED':
+        this.status = Status.Blocked;
+        return null;
+      case 'READY FOR REVIEW':
+        this.status = Status.Review;
+        return null;
+      case 'DONE':
+        this.status = Status.Done;
+        return null;
+      default:
+        return null;
+    } 
+  }
+  SetTitle(Title){
+    this.title = Title;
+    return null;
+  }
+  SetDescription(Description){
+    this.description = Description;
+    return null;
+  }
+  SetPriority(newPriority){
+    switch(newPriority){
+      case 'HIGHEST':
+        this.priority = Priority.Highest;
+        return null;
+      case 'HIGH':
+        this.priority = Priority.High;
+        return null;
+      case 'MEDIUM':
+        this.priority = Priority.Medium;
+        return null;
+      case 'LOW':
+        this.priority
+    }
   }
   
 
