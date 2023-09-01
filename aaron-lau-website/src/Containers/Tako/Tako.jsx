@@ -12,14 +12,14 @@ const Tako = () => {
     e.preventDefault();
     const newTask = {
       id: new Date().getTime(), //unique value each time its run
-      myNewTask: new Task(Title=input)
-    }
+      value: input
+    };
 
     setTasks([...input].concat(newTask))
     setInput("")
   }
   function deleteTask(id) {
-    [...tasks].filter((e) => e.myNewTask.)
+    //[...tasks].filter((e) => e.id === id ).newTask = null;
     const updatedTasks = [...tasks].filter((e) => e.id !== id)
     setTasks(updatedTasks);
   }
