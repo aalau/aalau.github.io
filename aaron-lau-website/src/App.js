@@ -6,12 +6,13 @@ import { Contact, Brand, Navbar } from './components';
 
 const App = () => {
   return (
-    <div className='App'>
+    <section >
       <div className='gradient_bg'>
         <Navbar />
         <Brand />
       </div>
       <center>
+      <div className='page'>
       <div className='top'>
       <Header />
       </div>
@@ -20,11 +21,15 @@ const App = () => {
       <Tako />
       <hr></hr>
       <Projects />
+      <div className='foot'>
       <Contact />
       <Blog />
-      </center>
       <Footer />
-    </div>
+      </div>
+      </div>
+      </center>
+      
+    </section>
   )
 }
 

@@ -26,11 +26,12 @@ const Tako = () => {
 
   return (
     <section className='Tako'>
-      <div>Tako: Task Management</div>
+      <div className='app_Tako-title'>Tako: Task Management</div>
       <div className='Input'>
         <form onSubmit={handleSubmit}>
-          <label>Start a new task: 
+          <label className='app-Tako-label'>Start a new task: 
             <input 
+            className='app_Tako-input'
             type = "text"
             placeholder='Refactor to .NET 7'
             onChange={(e) => setInput(e.target.value)}
@@ -45,8 +46,10 @@ const Tako = () => {
         
         </div> 
          )}
-      <section className='DisplayContent'>
-      
+      <section className='app_Tako-DisplayContent'>
+        <nav className='app_Tako-ToDo'>To Do</nav>
+        <nav className='app_Tako-InProgress'>In Progress</nav>
+        <nav className='app_Tako-Done'>Done</nav>
       </section>
       
     </section>
