@@ -1,6 +1,11 @@
 .links{
     display: inline flex;
     flex: 0.25;
-    justify-content: center;
-    font-size: large;
+    justify-content: center space-evenly;
+    font-size: xx-large;
+    a{
+        margin-inline: 35px;
+        margin-bottom: 5px;
+        color: var(--secondary-color);
+    }
 }

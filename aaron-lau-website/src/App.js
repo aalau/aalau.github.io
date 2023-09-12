@@ -2,29 +2,35 @@ import React from 'react'
 
 import { Tako, About, Features, Blog, Projects, Resume, Header, Footer } from './Containers';
 import { Contact, Brand, Navbar } from './components';
+//import './resources';
+import './App.scss';
 
 
 const App = () => {
+ 
   return (
-    <div className='App'>
+    <section >
       <div className='gradient_bg'>
         <Navbar />
         <Brand />
       </div>
       <center>
+      <div className='page'>
       <div className='top'>
       <Header />
       </div>
       <Resume />
-      <hr></hr>
       <Tako />
-      <hr></hr>
-      <Projects />
+      {/*<Projects />*/}
+      <div className='foot'>
       <Contact />
       <Blog />
-      </center>
       <Footer />
-    </div>
+      </div>
+      </div>
+      </center>
+      
+    </section>
   )
 }
 

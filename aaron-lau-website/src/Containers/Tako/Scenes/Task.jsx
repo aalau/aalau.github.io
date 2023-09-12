@@ -1,94 +1,56 @@
-import React, { Component } from 'react'
+import React, { Component, useContext, useId } from 'react';
 import { useState } from 'react';
-import './Task.scss'
+import './Task.jsx';
+import './Task.scss';
+import Draggable from 'react-draggable';
 
-const Priority = Enum({
-  Highest: 5,
-  High: 4,
-  Medium: 3,
-  Low: 2,
-  Lowest: 1
-})
-
-const Status = Enum({
-  Backlog: 'BACKLOG',
-  ToDo: 'TO DO',
-  InProgress: 'IN PROGRESS',
-  Blocked: 'BLOCKED',
-  Review: 'READY FOR REVIEW',
-  Done: 'DONE'
-})
-
-export default class Task extends React.Component {
-  constructor(Title, prior = Priority.Medium, Description = '', stat = Status.Backlog) {
-    this.title = Title
-    this.priority = prior
-    this.description = Description
-    this.status = stat
-  }
-  SetStatus(newStatus){
-    switch(newStatus) {
-      case 'BACKLOG':
-        this.status = Status.Backlog;
-        return null;
-      case 'TO DO':
-        this.status = Status.ToDo;
-        return null;
-      case 'IN PROGRESS':
-        this.status = Status.InProgress;
-        return null;
-      case 'BLOCKED':
-        this.status = Status.Blocked;
-        return null;
-      case 'READY FOR REVIEW':
-        this.status = Status.Review;
-        return null;
-      case 'DONE':
-        this.status = Status.Done;
-        return null;
-      default:
-        return null;
-    } 
-  }
-  SetTitle(Title){
-    this.title = Title;
-    return null;
-  }
-  SetDescription(Description){
-    this.description = Description;
-    return null;
-  }
-  SetPriority(newPriority){
-    switch(newPriority){
-      case 'HIGHEST':
-        this.priority = Priority.Highest;
-        return null;
-      case 'HIGH':
-        this.priority = Priority.High;
-        return null;
-      case 'MEDIUM':
-        this.priority = Priority.Medium;
-        return null;
-      case 'LOW':
-        this.priority
-    }
-  }
+export default function Task(){
+  const key = useId;
+  const [Story, setStory] = useState('STY')
+  const [Title, setTitle] = useState('New Task');
+  const [Description, SetDescription] = useState('');
+  const [Status, setStatus] = useState('TDO');
+  const [Priority, setPriority] = useState('MED')
+  
+  const handleTitleInput = e => {
+    setTitle(e.target.value);
+  };
+  const handleDescriptionSubmit = e => {
+    SetDescription(e.target.value);
+  };
   
 
-  render(){
-    return (
-      <div className='task'>
-        <div className='header'>
-        <nav className='title'>{this.props.Title}</nav>
-        <nav className='priority'>{this.props.Priority}</nav>
-        </div>
-        <div className='body'>
-          <button className='status'>{this.props.Status}</button>
-          <div>
-            <p className='description'>{this.props.description}</p>
-          </div>
+  return (
+    
+      <div  className='Tako' key={key}>
+      <div className='header'>
+      <button>{Story}-{key}</button>
+      <input className='title' type='text' placeholder='New Task' onChange={handleTitleInput} value={Title} />
+      <select id={Priority} name="selectedPriority" defaultValue='MED'>
+        <option value='XPD'>EXPEDITE</option>
+        <option value='PRI'>PRIORITIZE</option>
+        <option value='HGH'>HIGH</option>
+        <option value='MED'>MEDIUM</option>
+        <option value='LOW'>LOW</option>
+        <option value='DPR'>DEPRIORITIZE</option>
+      </select>
+      </div>
+      <div className='body'>
+        <label htmlFor={Status}>
+          Status 
+          <select id={Status} name="selectedStatus" defaultValue='TDO'>
+            <option value='BLG'>Backlog</option>
+            <option value='TDO'>To Do</option>
+            <option value='PRG'>In Progress</option>
+            <option value='BLK'>Blocked</option>
+            <option value='DON'>Done</option>
+          </select>
+        </label>
+        <div>
+          <p className='description' placeholder='describe your task here...'>{Description}</p>
         </div>
       </div>
-    )
-  }
-}
+      </div>
+    
+  )
+};

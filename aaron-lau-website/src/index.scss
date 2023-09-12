@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aldrich&family=Orbitron&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aldrich&family=Orbitron&family=Rajdhani&display=swap');
+
+:root {
+    --font-base: "Noto Sans", sans-serif;
+    --primary-font: "Orbitron", sans-serif;
+    --secondary-font: "Rajdhani", sans-serif;
+    --detail-font: "Aldrich", sans-serif;
+
+    --primary-color: #ffda91;
+    --secondary-color: #ebb732;
+    --black-color: #030303;
+    --light-grey-color: #e4e4e4;
+    --grey-color: #898989;
+    --brown-color: #46364a;
+    --white-color: #ffffff;
+
+    --tako-main-color: #04381adc;
+    --tako-border-color: #0b6c2785;
+    --tako-card-color: teal;
+    --tako-card-accent-color: lightblue;
+    --tako-light-text-color: white;
+    --tako-dark-text-color: black;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+}
