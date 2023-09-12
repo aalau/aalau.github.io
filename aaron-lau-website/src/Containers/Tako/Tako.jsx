@@ -2,27 +2,33 @@ import React from 'react'
 import { useState, Component } from 'react';
 import ReactDOM from 'react-dom/client'
 import './Tako.scss'
-//import { Task } from './Scenes';
+import Task from './Scenes/Task';
 
 const Tako = () => {
-  const [tasks, setTasks] = React.useState([])
+  const [tasks, setTasks] = useState([]);
   const [input, setInput] = React.useState("")
   const [column, setColumn] = React.useState([])
+
   function handleSubmit(e) {
     e.preventDefault();
-    const newTask = {
-      id: new Date().getTime(), //unique value each time its run
-      value: input
-    };
-
-    setTasks([...input].concat(newTask))
-    setInput("")
+    const newTask = <Task Title={input}/>;
+    setTasks([...input].concat(newTask));
+    setInput("");
   }
   function deleteTask(id) {
-    //[...tasks].filter((e) => e.id === id ).newTask = null;
     const updatedTasks = [...tasks].filter((e) => e.id !== id)
     setTasks(updatedTasks);
   }
+  function renderTasksBySwimlane(swimlane){
+    return [...tasks].filter((task) => task.Status === swimlane);
+  }
+  function takoTaskSetup(){
+    const newTask1 = <Task Title={'Create Full Task View'} Story={'TAKO'} Status={'TDO'} Priority={'HGH'}/>
+    const newTask2 = <Task Title={'Color Coordinate Story'} Story={'TAKO'} Status={'TDO'} Priority={'LOW'}/>
+    const newTask3 = <Task Title={'Build MVP with React'} Story={'TAKO'} Status={'PRG'} Priority={'PRI'}/>
+    setTasks([...tasks].concat(newTask1))//.concat(newTask2).concat(newTask3))
+  }
+  
 
   return (
     <section className='Tako'>
@@ -41,15 +47,18 @@ const Tako = () => {
           <button className='app_Tako-button' type="submit">Takoff!</button>
         </form>
       </div>
-      {tasks.forEach((e) => <div key={e.id}>
-        <div>{e.text} <button onClick={() => deleteTask(e.id)}>X</button></div>
-        
-        </div> 
-         )}
+     
       <section className='app_Tako-DisplayContent'>
-        <nav className='app_Tako-ToDo'>To Do</nav>
-        <nav className='app_Tako-InProgress'>In Progress</nav>
-        <nav className='app_Tako-Done'>Done</nav>
+        {takoTaskSetup()}
+        <nav className='app_Tako-ToDo'>To Do<div id='TDO'>
+          {renderTasksBySwimlane('TDO')}
+          </div></nav>
+        <nav className='app_Tako-InProgress'>In Progress<div id='PRG'>
+          {renderTasksBySwimlane('PRG')}
+          </div></nav>
+        <nav className='app_Tako-Done'>Done<div id='DON'>
+          {renderTasksBySwimlane('DON')}
+          </div></nav>
       </section>
       
     </section>
@@ -58,11 +67,9 @@ const Tako = () => {
 
 export default Tako
 
-/*
-<LeafList Kanban>
-          <Leaf Backlog></Leaf>
-          <Leaf InProgress></Leaf>
-          <Leaf Done></Leaf>
-        </LeafList>
-
-*/
+/* {tasks.forEach((e) => <div key={e.id}>
+<div>{e.text} <button onClick={() => deleteTask(e.id)}>X</button></div>
+        
+</div> 
+ )}
+ */

@@ -1,7 +1,7 @@
 .Tako {
     font-family: "JetBrains Mono",monospace;
-    background-color: #04381adc;
-    border-color: #0b6c2785;
+    background-color: var(--tako-main-color);
+    border-color: var(--tako-border-color);
     color: #FCFCFC;
     border-style:double;
     border-radius: 10px;
@@ -9,6 +9,7 @@
     width: fit-content;
     justify-content: space-between;
     border-spacing: 2px;
+    margin-bottom: 15px;
 }
 .app_Tako-title {
     border-radius: 4px;
@@ -88,6 +89,8 @@
 }
 .app_Tako-DisplayContent{
     height: 25rem;
+    width: 45rem;
+    // TODO: need to change width for mobile here
     display: flex;
 
     .app_Tako-ToDo {

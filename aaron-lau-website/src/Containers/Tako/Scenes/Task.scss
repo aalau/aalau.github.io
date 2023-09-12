@@ -1,0 +1,56 @@
+.Task {
+    font-family: "JetBrains Mono",monospace;
+    background-color: var(--light-grey-color);
+    border-color: var(--grey-color);
+    color: #FAFAFA;
+    border-style: double;
+    border-radius: 2px;
+    border-width: 3px;
+    width: fit-content;
+    justify-content: space-between;
+    border-spacing: 2px;
+    position: relative;
+    text-align: left;
+}
+.title{
+    border: none; 
+    background: transparent; 
+    outline: 0;
+    color: #FAFAFA;
+    display: inline-flex;
+    font-size: large;
+    white-space: nowrap;
+    max-width: fit-content;
+    align-items: start;
+}
+input:focus,button:focus{
+    outline: auto;
+    color: var(--light-grey-color)
+}
+button{
+    display: inline;
+    align-items: start;
+    font-size: 10px;
+    width: fit-content;
+    display: inline-flex;
+    white-space: nowrap;
+    background: transparent;
+    border-style: none;
+    color: var(--light-grey-color);
+}
+label {
+    font-size: smaller;
+}
+select {
+    option{
+        font-size: smaller;
+    }
+}
+.description{
+    min-height: 16px;
+    background-color: var(--light-grey-color);
+    margin-top: 5px;
+    margin: 2px;
+    border-radius: 2px;
+    border-width: 3px;
+}
