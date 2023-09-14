@@ -49,15 +49,14 @@ const Tako = () => {
       </div>
      
       <section className='app_Tako-DisplayContent'>
-        {takoTaskSetup()}
         <nav className='app_Tako-ToDo'>To Do<div id='TDO'>
-          {renderTasksBySwimlane('TDO')}
+          <Task />
           </div></nav>
         <nav className='app_Tako-InProgress'>In Progress<div id='PRG'>
-          {renderTasksBySwimlane('PRG')}
+          <Task Title='Create Tako' Status='PRG'/>
           </div></nav>
         <nav className='app_Tako-Done'>Done<div id='DON'>
-          {renderTasksBySwimlane('DON')}
+          <Task Title='Success Plan' Status='DON'/>
           </div></nav>
       </section>
       
@@ -72,4 +71,17 @@ export default Tako
         
 </div> 
  )}
+
+ <section className='app_Tako-DisplayContent'>
+        {takoTaskSetup()}
+        <nav className='app_Tako-ToDo'>To Do<div id='TDO'>
+          {renderTasksBySwimlane('TDO')}
+          </div></nav>
+        <nav className='app_Tako-InProgress'>In Progress<div id='PRG'>
+          {renderTasksBySwimlane('PRG')}
+          </div></nav>
+        <nav className='app_Tako-Done'>Done<div id='DON'>
+          {renderTasksBySwimlane('DON')}
+          </div></nav>
+      </section>
  */
