@@ -23,9 +23,9 @@ const App = () => {
       <Tako />
       {/*<Projects />*/}
       <div className='foot'>
-      <Contact />
       <Blog />
-      <Footer />
+      <Contact />
+      <Footer ></Footer>
       </div>
       </div>
       </center>

@@ -19,7 +19,11 @@ const Navbar = () => {
         </li>
         ))}
         <li>
-          <button className='app_navbar-button' onClick={() => console.log('connect')}>Connect</button>
+          <button className='app_navbar-button' onClick=
+          {
+            () => console.log('contact!')
+            //() => app.current.scrollIntoView({ behavior: "smooth", block: "end" })
+          }>Connect</button>
         </li>
       </ul>
     </nav>

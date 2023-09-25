@@ -24,20 +24,27 @@ const Contact = () => {
     alert(result.status);
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
+    <form onSubmit={handleSubmit} className="contactForm">
+      
+      <div className="title">
+        <h2>Have a question?</h2>
+        <p>Reach out to me here and we can setup time to chat!</p>
+      </div>
+      <div className="textSubmit">
+      <div className="nameWrapper">
         <label htmlFor="name">Name:</label>
         <input type="text" id="name" required />
       </div>
-      <div>
+      <div className="emailWrapper">
         <label htmlFor="email">Email:</label>
         <input type="email" id="email" required />
       </div>
-      <div>
+      <div className="messageWrapper">
         <label htmlFor="message">Message:</label>
         <textarea id="message" required />
       </div>
-      <button type="submit">{status}</button>
+      </div>
+      <button type="submit" className="submitButton">{status}</button>
     </form>
   );
 };

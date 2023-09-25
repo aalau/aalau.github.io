@@ -12,6 +12,7 @@ export default function Task(){
   const [Status, setStatus] = useState('TDO');
   const [Priority, setPriority] = useState('MED');
   
+  
   const handleTitleInput = e => {
     setTitle(e.target.value);
   };
@@ -25,14 +26,17 @@ export default function Task(){
     setPriority(e.target.value);
   };
   const deleteTask = ({
-    //TODO: 
+    
+  });
+
+  //TODO: 
     // 1. setup delete task https://stackoverflow.com/questions/43230622/reactjs-how-to-delete-item-from-list
     // 2. Render Tasks in Tako using https://react.dev/learn/rendering-lists#rendering-data-from-arrays and perhaps https://react.dev/learn/render-and-commit
     // 3. Create Example tasks for each project
     // 4. Create new function in Task reflected in Tako just like delete task that will change which swimlane a task appears in when you change it's status, and vice-versa
+    // 4.1 draggable? https://medium.com/the-andela-way/react-drag-and-drop-7411d14894b9 
     // 5. Finish Project view?
     // 6. When switching projects, have a new "story" swimlane appear (or switched to) which shows the tasks for that project
-  });
   
 
   return (
@@ -62,7 +66,7 @@ export default function Task(){
           </select>
         </label>
         <div>
-          <p className='description' placeholder='describe your task here...' onChange={handleDescriptionSubmit}>{Description}</p>
+          <p className='description' placeholder='describe your task here...' contentEditable="true" onChange={handleDescriptionSubmit}>{Description}</p>
         </div>
         <div name='footer'>
           <button id='deleteTask' onClick={deleteTask}>Delete</button>

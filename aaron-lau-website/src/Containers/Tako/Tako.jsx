@@ -19,9 +19,9 @@ const Tako = () => {
     const updatedTasks = [...tasks].filter((e) => e.id !== id)
     setTasks(updatedTasks);
   }
-  function renderTasksBySwimlane(swimlane){
-    return [...tasks].filter((task) => task.Status === swimlane);
-  }
+  function Task(){}
+    //return [...tasks].filter((task) => task.Status === swimlane);
+  
   function takoTaskSetup(){
     const newTask1 = <Task Title={'Create Full Task View'} Story={'TAKO'} Status={'TDO'} Priority={'HGH'}/>
     const newTask2 = <Task Title={'Color Coordinate Story'} Story={'TAKO'} Status={'TDO'} Priority={'LOW'}/>
@@ -44,14 +44,15 @@ const Tako = () => {
             value = {input}
             />
           </label>
-          <button className='app_Tako-button' type="submit">Takoff!</button>
+          <button className='app_Tako-button' type="submit" onSubmit={handleSubmit}>Takoff!</button>
         </form>
       </div>
      
       <section className='app_Tako-DisplayContent'>
-        <nav className='app_Tako-ToDo'>To Do<div id='TDO'>
-          <Task />
-          </div></nav>
+        <nav className='app_Tako-ToDo'>To Do<div id='PRG'>
+          <Task Title='Create Tako' Status='PRG'/>
+          </div>
+        </nav>
         <nav className='app_Tako-InProgress'>In Progress<div id='PRG'>
           <Task Title='Create Tako' Status='PRG'/>
           </div></nav>
