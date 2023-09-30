@@ -25,8 +25,8 @@ const App = () => {
       <div className='foot'>
       <Blog />
       <Contact />
-      <Footer ></Footer>
       </div>
+      <Footer ></Footer>
       </div>
       </center>
       

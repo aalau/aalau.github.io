@@ -47,7 +47,7 @@ const Header = () => {
     <div className='app_header app_flex'>
       <div className='app_header_elements'>
       <h1>Aaron Lau</h1>
-      <img src={require('../../resources/aaron-lau-in-center-cropped.jpg')} alt='Software Developer' height='300rem'></img>
+      <img src={require('../../resources/aaron-lau-in-center-cropped.jpg')} alt='Software Developer Aaron Lau' width='300rem'></img>
       <div className='inline'>
         <div className='text'>I design</div>
         <div className='animate text' style={{ position: "relative" }}>
