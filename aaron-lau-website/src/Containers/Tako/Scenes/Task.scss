@@ -12,11 +12,25 @@
     position: relative;
     text-align: left;
 }
+.ModalTask {
+    font-family: "JetBrains Mono",monospace;
+    background-color: var(--light-grey-color);
+    border-color: var(--grey-color);
+    color: #FAFAFA;
+    border-style: double;
+    border-radius: 2px;
+    border-width: 3px;
+    width: fit-content;
+    justify-content: space-between;
+    border-spacing: 2px;
+    position: relative;
+    text-align: left;
+}
 .title{
     border: none; 
     background: transparent; 
     outline: 0;
-    color: #FAFAFA;
+    color: green;
     display: inline-flex;
     font-size: large;
     white-space: nowrap;

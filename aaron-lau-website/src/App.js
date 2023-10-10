@@ -26,9 +26,9 @@ const App = () => {
       <Blog />
       <Contact />
       </div>
-      <Footer ></Footer>
       </div>
       </center>
+      <Footer />
       
     </section>
   )

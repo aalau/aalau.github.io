@@ -1,7 +1,5 @@
 import React, { Component, useContext, useId } from 'react';
-import { useState } from 'react';
-import { Fragment } from 'react';
-import './Task.jsx';
+import { useState, useReducer, Fragment } from 'react';
 import './Task.scss';
 import Draggable from 'react-draggable';
 import Modal from '@mui/material/Modal';
@@ -9,30 +7,8 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
 
-export  function OldTask({ Title, Story, Key, Description, Status, Priority, isActive}){
-  /*const key = useId();
-  const [Story, setStory] = useState('STY');
-  const [Title, setTitle] = useState();
-  const [Description, SetDescription] = useState('');
-  const [Status, setStatus] = useState('TDO');
-  const [Priority, setPriority] = useState('MED');*/
+export default function Task({ Title, setTitle, Story, Key, Description, setDescription, Status, setStatus, Priority, setPriority}){
   
-  
-  /*const handleTitleInput = e => {
-    setTitle(e.target.value);
-  };
-  const handleDescriptionSubmit = e => {
-    SetDescription(e.target.value);
-  };
-  const handleStatusChange = e => {
-    setStatus(e.target.value);
-  };
-  const handlePriorityChange = e => {
-    setPriority(e.target.value);
-  };
-  const deleteTask = ({
-    
-  });*/
 
   //TODO: 
     // 1. setup delete task https://stackoverflow.com/questions/43230622/reactjs-how-to-delete-item-from-list
@@ -45,12 +21,10 @@ export  function OldTask({ Title, Story, Key, Description, Status, Priority, isA
   
 
   return (
+    <Fragment>
       <section  className='Tako' key={Key}>
-      <input className='title' type='text' placeholder='New Task' value={Title} />
-      {isActive ? 
-      (
-      <>
-        <select value={Priority} name="selectedPriority" defaultValue='MED'>
+      <input className='title' type='text' placeholder='New Task' value={Title} onChange={setTitle}/>
+        <select value={Priority} name="selectedPriority" defaultValue='MED' onChange={setPriority}>
           <option value='XPD'>EXPEDITE</option>
           <option value='PRI'>PRIORITIZE</option>
           <option value='HGH'>HIGH</option>
@@ -61,7 +35,7 @@ export  function OldTask({ Title, Story, Key, Description, Status, Priority, isA
         <div className='body'>
           <label htmlFor={Status}>
             Status 
-            <select value={Status} name="selectedStatus" defaultValue='TDO' >
+            <select value={Status} name="selectedStatus" defaultValue='TDO' onChange={setStatus}>
               <option value='BLG'>Backlog</option>
               <option value='TDO'>To Do</option>
               <option value='PRG'>In Progress</option>
@@ -70,19 +44,15 @@ export  function OldTask({ Title, Story, Key, Description, Status, Priority, isA
             </select>
           </label>
           <div>
-            <textarea name='selectedDescription' value={Description} ></textarea>
+            <textarea name='selectedDescription' value={Description} onChange={setDescription}></textarea>
           </div>
           <div name='footer'>
-            <button id='deleteTask' >Delete</button>
+            <button id='deleteTask'>Delete</button>
           </div>
         </div>
-      </>
-      ) : 
-      (
-        <button>{Story}-{Key}</button> //onClick={() => setIsActive(true)}>{Story}-{Key}</button>
-        )}
-      
-      </section>
+        <button>{Story}-{Key}</button>
+        </section>
+      </Fragment>
     
   )
 };
@@ -100,14 +70,14 @@ const style = {
 };
 
 
-export default function Task({Title, Story, Key, Description, Status, Priority}){
+export function ModalTask({ Title, setTitle, Story, Key, Description, setDescription, Status, setStatus, Priority, setPriority}){
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   return(
   <Fragment>
-    <button onClick={handleOpen}>{Story}-{Key}</button>
+    <button onClick={handleOpen}>{Title}</button>
     <Modal
       open={open}
       onClose={handleClose}
@@ -117,12 +87,12 @@ export default function Task({Title, Story, Key, Description, Status, Priority})
         <Box sx={style}>
           <div>
           <nav>{Story}-{Key}</nav>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
+          <Typography id="modal-modal-title" variant="h6" component="h2" onChange={setTitle}>
             {Title}
           </Typography>
           </div> 
           <nav className='statusStyle'>
-            <select value={Status} name="selectedStatus" defaultValue='TDO' >
+            <select value={Status} name="selectedStatus" defaultValue='TDO' onChange={setStatus}>
               <option value='BLG'>Backlog</option>
               <option value='TDO'>To Do</option>
               <option value='PRG'>In Progress</option>
@@ -131,7 +101,7 @@ export default function Task({Title, Story, Key, Description, Status, Priority})
             </select>
           </nav>
           <div>
-            <select value={Priority} name="selectedPriority" defaultValue='MED'>
+            <select value={Priority} name="selectedPriority" defaultValue='MED' onChange={setPriority}>
             <option value='XPD'>EXPEDITE</option>
             <option value='PRI'>PRIORITIZE</option>
             <option value='HGH'>HIGH</option>
@@ -140,7 +110,7 @@ export default function Task({Title, Story, Key, Description, Status, Priority})
             <option value='DPR'>DEPRIORITIZE</option>
             </select>
           </div>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }} onChange={setDescription}>
             {Description}
           </Typography>
         </Box>
@@ -149,5 +119,53 @@ export default function Task({Title, Story, Key, Description, Status, Priority})
   )
 }
 
-export function TaskList({ swimlane, taskIds, renderRow }){
+
+
+function testTask({ task, onChange, onDelete }) {
+  const [isFocus, setFocus] = useState(false);
+  let taskContent;
+  if (isFocus) {
+    taskContent = (
+      <Fragment>
+        <input
+          value={task.Title}
+          onChange={e => {
+            onChange({
+              ...task,
+              Title: e.target.value
+            });
+          }} />
+        <button onClick={() => setFocus(false)}>
+          Save
+        </button>
+      </Fragment>
+    );
+  } else {
+    taskContent = (
+      <>
+        {task.Title}
+        <button onClick={() => setFocus(true)}>
+          Edit
+        </button>
+      </>
+    );
+  }
+  return (
+    <label>
+      <input
+        type="checkbox"
+        checked={task.done}
+        onChange={e => {
+          onChange({
+            ...task,
+            done: e.target.checked
+          });
+        }}
+      />
+      {taskContent}
+      <button onClick={() => onDelete(task.id)}>
+        Delete
+      </button>
+    </label>
+  );
 }
