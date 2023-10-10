@@ -1,5 +1,5 @@
 # Website
-Let's build a website using React in a week! 
+Let's build a website using React! 
 
 It should have a form for contacting me, a downloadable resume, and a todo app for my projects.
 
