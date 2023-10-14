@@ -1,42 +1,28 @@
-import React from 'react'
-import { useState, useReducer, Component } from 'react';
-import ReactDOM from 'react-dom/client'
+import { useState, useReducer } from 'react';
 import './Tako.scss'
-import Task,{ModalTask} from './Scenes/Task';
-import TaskReducer from './Scenes/taskReducer';
+import { TasksProvider } from './Scenes/TasksContext';
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary'; 
+import AddTask from './Scenes/AddTask';
+import TaskList from './Scenes/TaskList';
 
 const Tako = () => {
-  const [tasks, dispatch] = useReducer(taskReducer, initialTasks);
-  const currentTask = tasks.find((t) => t.id === tasks.seletedId);
-
+  const [swimlanes, setSwimlanes] = useState({
+    'BLG': "Backlog",
+    'TDO': "To Do",
+    'PRG': "In Progress",
+    'BLK': "Blocked",
+    'DON': "Done"
+  });
+  
   return (
-    <section className='Tako'>
-      <div className='app_Tako-title'>Tako: Task Management</div>
-      <div className='Input'>
-        <AddTask onAddTask={handleAddTask}/>
-      </div>
-     
-      
-    </section>
+    <ErrorBoundary fallback={<p>Something went wrong</p>}>
+      <TasksProvider>
+        <div className='app_Tako-title'>Tako: Task Management</div>
+        <AddTask />
+        <TaskList />
+      </TasksProvider>
+    </ErrorBoundary>
   )
-}
+};
 
 export default Tako
-
-/*
-<section className='app_Tako-DisplayContent'>
-        <nav className='app_Tako-ToDo'>To Do<div id='TDO'>
-          {
-}
-          <ModalTask Title={'Create Full Task View'} Story={'TAKO'} key={1} Status={'PRG'} Priority={'HGH'} Description={'Build out tasks for the website project to show how '} isActive={true}>Create Full Task View</ModalTask>
-          </div>
-        </nav>
-        <nav className='app_Tako-InProgress'>In Progress<div id='PRG'>
-          <Task Title={'Build MVP with React'} Story={'TAKO'} key={3} Status={'PRG'} Priority={'PRI'} isActive={false}/>
-          </div></nav>
-        <nav className='app_Tako-Done'>Done<div id='DON'>
-        
-          </div></nav>
-      </section>
-
-*/

@@ -1,8 +1,19 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { TasksDispatchContext } from './TasksContext.jsx';
+import './../Tako.scss';
 
 export default function AddTask({ onAddTask }) {
   const [text, setText] = useState('');
   const [title, setTitle] = useState('');
+  const [nextId, setCurrentMaxId] = useState(1);
+  const dispatch = useContext(TasksDispatchContext);
+
+  function getNextId(){
+    const returnId = setCurrentMaxId;
+    setCurrentMaxId(nextId + 1);
+    return returnId; // error checking for ids?
+  }
+
   return (
     <>
         <label className='app-Tako-label-title'>Start a new task:
@@ -11,7 +22,7 @@ export default function AddTask({ onAddTask }) {
             type = "text"
             placeholder='Refactor to .NET 7'
             onChange={(e) => setTitle(e.target.value)}
-            value = {Title}
+            value = {title}
         /></label>
         <label className='app_Tako-label-description'>
         <input
@@ -23,7 +34,12 @@ export default function AddTask({ onAddTask }) {
         /></label>
         <button onClick={() => {
         setText('');
-        onAddTask(text);
+        dispatch({
+            type: 'added',
+            id: nextId++,
+            Title: title,
+            Description: text
+        });
       }}>Takoff!</button>
     </>
   )

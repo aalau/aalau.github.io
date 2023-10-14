@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Tako, About, Features, Blog, Projects, Resume, Header, Footer } from './Containers';
+import { Tako, About, Features, Blog, Projects, Resume, Header, Footer, ErrorBoundary } from './Containers';
 import { Contact, Brand, Navbar } from './components';
 //import './resources';
 import './App.scss';
