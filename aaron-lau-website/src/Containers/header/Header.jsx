@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const items = [
   {
     id: 1,
-    content: "software solutions."
+    content: "software solutions"
   },
   {
     id: 2,
@@ -38,7 +38,7 @@ const Header = () => {
           if (state >= items.length - 1) return 0;
           return state + 1;
         });
-      }, 5000);
+      }, 3500);
       return () => clearInterval(id);
     }, []);
 

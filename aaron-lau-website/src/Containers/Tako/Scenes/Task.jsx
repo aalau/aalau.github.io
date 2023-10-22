@@ -1,51 +1,18 @@
-import React, { Component, useContext, useId } from 'react';
+import React, { Component, useContext, useEffect, useId } from 'react';
 import { useState } from 'react';
 import './Task.jsx';
 import './Task.scss';
 import Draggable from 'react-draggable';
 
-export default function Task(){
-  const key = useId();
-  const [Story, setStory] = useState('STY');
-  const [Title, setTitle] = useState('New Task');
-  const [Description, SetDescription] = useState('');
-  const [Status, setStatus] = useState('TDO');
-  const [Priority, setPriority] = useState('MED');
+export default function Task({task}, deleteTask, changeTask){
+  const { Id, Title, Story, Status, Priority, Description} = task;
   
-  
-  const handleTitleInput = e => {
-    setTitle(e.target.value);
-  };
-  const handleDescriptionSubmit = e => {
-    SetDescription(e.target.value);
-  };
-  const handleStatusChange = e => {
-    setStatus(e.target.value);
-  };
-  const handlePriorityChange = e => {
-    setPriority(e.target.value);
-  };
-  const deleteTask = ({
-    
-  });
-
-  //TODO: 
-    // 1. setup delete task https://stackoverflow.com/questions/43230622/reactjs-how-to-delete-item-from-list
-    // 2. Render Tasks in Tako using https://react.dev/learn/rendering-lists#rendering-data-from-arrays and perhaps https://react.dev/learn/render-and-commit
-    // 3. Create Example tasks for each project
-    // 4. Create new function in Task reflected in Tako just like delete task that will change which swimlane a task appears in when you change it's status, and vice-versa
-    // 4.1 draggable? https://medium.com/the-andela-way/react-drag-and-drop-7411d14894b9 
-    // 5. Finish Project view?
-    // 6. When switching projects, have a new "story" swimlane appear (or switched to) which shows the tasks for that project
-  
-
   return (
-    
-      <div  className='Tako' key={key}>
+      <div  className='Tako' key={Id}>
       <div className='header'>
-      <button>{Story}-{key}</button>
-      <input className='title' type='text' placeholder='New Task' onChange={handleTitleInput} value={Title} />
-      <select id={Priority} name="selectedPriority" defaultValue='MED' onChange={handlePriorityChange}>
+      <button>{Story}-{Id}</button>
+      <input className='title' type='text' placeholder='New Task' value={Title} onChange={changeTask}/>
+      <select id={Priority} name="selectedPriority" defaultValue='MED' onChange={changeTask}>
         <option value='XPD'>EXPEDITE</option>
         <option value='PRI'>PRIORITIZE</option>
         <option value='HGH'>HIGH</option>
@@ -57,7 +24,7 @@ export default function Task(){
       <div className='body'>
         <label htmlFor={Status}>
           Status 
-          <select id={Status} name="selectedStatus" defaultValue='TDO' onChange={handleStatusChange}>
+          <select id={Status} name="selectedStatus" defaultValue='TDO' onChange={changeTask}>
             <option value='BLG'>Backlog</option>
             <option value='TDO'>To Do</option>
             <option value='PRG'>In Progress</option>
@@ -66,7 +33,7 @@ export default function Task(){
           </select>
         </label>
         <div>
-          <p className='description' placeholder='describe your task here...' contentEditable="true" onChange={handleDescriptionSubmit}>{Description}</p>
+          <p className='description' placeholder='describe your task here...' contentEditable="true" onChange={changeTask}>{Description}</p>
         </div>
         <div name='footer'>
           <button id='deleteTask' onClick={deleteTask}>Delete</button>
