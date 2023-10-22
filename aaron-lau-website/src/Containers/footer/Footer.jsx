@@ -3,7 +3,7 @@ import './footer.scss'
 
 const Footer = () => {
   return (
-    <div className='footer'>footer</div>
+    <div className='footer'>built using react 18.2.0</div>
   )
 }
 
