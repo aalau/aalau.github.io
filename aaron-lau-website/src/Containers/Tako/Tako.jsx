@@ -1,8 +1,9 @@
-import React from 'react'
-import { useState, Component } from 'react';
-import ReactDOM from 'react-dom/client'
+import { useState, useReducer } from 'react';
 import './Tako.scss'
-import Task from './Scenes/Task';
+import { TasksProvider } from './Scenes/TasksContext';
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary'; 
+import AddTask from './Scenes/AddTask';
+import TaskList from './Scenes/TaskList';
 
 const Tako = () => {
   const [tasks, setTasks] = useState(takoTaskSetup);
@@ -97,7 +98,7 @@ const Tako = () => {
       
     </section>
   )
-}
+};
 
 export default Tako
 
