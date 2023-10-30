@@ -1,24 +1,39 @@
-import { useState, useReducer } from 'react';
+import { useState } from 'react';
 import './Tako.scss'
-import { TasksProvider } from './Scenes/TasksContext';
-import ErrorBoundary from '../ErrorBoundary/ErrorBoundary'; 
-import AddTask from './Scenes/AddTask';
+import Task from './Scenes/Task.jsx'
+import TaskForm from './Scenes/TaskForm.jsx'
 import TaskList from './Scenes/TaskList';
+import Dialog from '@mui/material/Dialog';
+import { WidthFull } from '@mui/icons-material';
 
 const Tako = () => {
   const [tasks, setTasks] = useState(takoTaskSetup);
   const [input, setInput] = useState("");
   const [nextID, setNextId] = useState(100);
+  const [open, setOpenNewTask] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpenNewTask(true);
+  };
+  const handleClose = () => {
+    setOpenNewTask(false);
+  };
   
   function getNewId() {
     const myId = nextID;
     setNextId(1 + myId);
     return myId;
   };
-  const releaseId = (task) => {};
+  //const releaseId = (task) => {}; todo: memory management!
+  
   const addTask = (newTask) => {
     setTasks([...tasks, newTask]);
+    //force re-render of swimlanes!
+    renderTasksBySwimlane(tasks,'TDO')
+    renderTasksBySwimlane(tasks,'PRG')
+    renderTasksBySwimlane(tasks,'DON')
   };
+  
   const updateTask = (taskId, updatedTask) => {
     // Create a copy of the tasks array
     const updatedTasks = tasks.map((task) => {
@@ -32,16 +47,9 @@ const Tako = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-
+    handleClickOpen();
   }
 
-  function handleActivateAddTaskForm(e) {
-    const newId = getNewId();
-    const newTask = {Id: newId, 'Title': input, 'Story':'TAKO', 'Status':'BLG', 'Priority':'MED', 'Description':'Lorem Ipsum'};
-    const newTasks = [...tasks, newTask];
-    setInput("");
-    setTasks(newTasks);
-  }
   function onDeleteTask(task) {
     const updatedTasks = [...tasks].filter((e) => e.Id !== task.Id)
     setTasks(updatedTasks);
@@ -68,8 +76,11 @@ const Tako = () => {
   return (
     <section className='Tako'>
       <div className='app_Tako-title'>Tako: Task Management</div>
+      <Dialog className='app_Tako-Dialog-NewTask' open={open} onClose={handleClose}>
+          <TaskForm input={input} addTask={addTask}></TaskForm>
+      </Dialog>
       <div className='Input'>
-        <form onSubmit={handleActivateAddTaskForm}>
+        <form onSubmit={handleSubmit}>
           <label className='app-Tako-label'>Start a new task: 
             <input 
             className='app_Tako-input'
@@ -79,7 +90,7 @@ const Tako = () => {
             value = {input}
             />
           </label>
-          <button className='app_Tako-button' type="submit" onSubmit={handleSubmit}>Takoff!</button>
+          <button className='app_Tako-button' type="submit">Takoff!</button>
         </form>
       </div>
      
@@ -89,10 +100,10 @@ const Tako = () => {
           </div>
         </nav>
         <nav className='app_Tako-InProgress'>In Progress<div id='PRG'>
-        {renderTasksBySwimlane(tasks,'PRG')}
+          {renderTasksBySwimlane(tasks,'PRG')}
           </div></nav>
         <nav className='app_Tako-Done'>Done<div id='DON'>
-        {renderTasksBySwimlane(tasks,'DON')}
+          {renderTasksBySwimlane(tasks,'DON')}
           </div></nav>
       </section>
       

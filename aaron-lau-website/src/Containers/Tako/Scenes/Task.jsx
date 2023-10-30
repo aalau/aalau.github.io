@@ -1,6 +1,5 @@
 import React, { Component, useContext, useEffect, useId } from 'react';
 import { useState } from 'react';
-import './Task.jsx';
 import './Task.scss';
 import Draggable from 'react-draggable';
 import Modal from '@mui/material/Modal';
