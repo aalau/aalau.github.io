@@ -1,6 +1,9 @@
 import React from 'react';
 import './navbar.scss';
 import Image from '../../resources/A.png';
+import App from '../../App.js'
+
+const element = document.getElementById("Contact");
 
 
 const Navbar = () => {
@@ -21,8 +24,9 @@ const Navbar = () => {
         <li>
           <button className='app_navbar-button' onClick=
           {
-            () => console.log('contact!')
-            //() => app.current.scrollIntoView({ behavior: "smooth", block: "end" })
+            //() => console.log('contact!')
+            
+            () => element.scrollIntoView({ behavior: "smooth", block: "end" })
           }>Connect</button>
         </li>
       </ul>

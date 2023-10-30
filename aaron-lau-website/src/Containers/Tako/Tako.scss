@@ -89,15 +89,55 @@
         transform: translateY(2px);
     }
 }
-.app_Tako-DisplayContent{
-    min-height: 25rem;
-    width: 37rem;
-    // TODO: need to change width for mobile here
-    display: flex;
 
+@media only screen and (max-width: 800px) {
+    // TODO: need to change width for mobile here
+    .app_Tako-ToDo{
+        display: flex;
+        flex-wrap: wrap;
+        flex-flow: column wrap;
+        max-width: 15rem;
+        margin-top: 12px;
+        background-color: var(--light-grey-color);
+        flex: 200px;
+        color:#04381adc;
+        border-radius: 2px;
+    }
+    .app_Tako-InProgress {
+        display: flex;
+        flex-wrap: wrap;
+        flex-flow: column wrap;
+        flex-direction: column;
+        max-width: 15rem;
+        margin-top: 12px;
+        background-color: var(--light-grey-color);
+        flex: 200px;
+        color:#04381adc;
+        border-radius: 2px;
+    }
+    .app_Tako-Done {
+        display: flex;
+        flex-wrap: wrap;
+        flex-flow: column wrap;
+        flex-direction: column;
+        max-width: 15rem;
+        margin-top: 12px;
+        background-color: var(--light-grey-color);
+        flex: 200px;
+        color:#04381adc;
+        border-radius: 2px;
+    }
+}
+
+@media only screen and (min-width: 801px) {
+    .app_Tako-DisplayContent{
+        min-height: 25rem;
+        width: 45rem;
+        display: flex;
+    }
     .app_Tako-ToDo {
         min-height: 50px;
-        min-width: 50px;
+        min-width: 55px;
         margin: 3px;
         margin-top: 12px;
         background-color: var(--light-grey-color);
@@ -126,6 +166,3 @@
         border-radius: 2px;
     }
 }
- .app_Tako-Dialog-NewTask{
-    
- }
