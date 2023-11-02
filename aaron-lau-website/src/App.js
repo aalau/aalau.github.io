@@ -3,7 +3,7 @@ import React from 'react'
 import { Tako, About, Features, Blog, Projects, Resume, Header, Footer, ErrorBoundary } from './Containers';
 import { Contact, Brand, Navbar } from './components';
 import { BrowserRouter, Router , Routes, Route } from "react-router-dom";
-import './resources';
+//import './resources';
 import './App.scss';
 
 
@@ -12,12 +12,18 @@ const App = () => {
   return (
     <section >
       <div className='gradient_bg'>
+        {/*
         <Router>
-          <Navbar />
+          
           <Routes>
-            {/* https://www.geeksforgeeks.org/reactjs-router/# */}
+            <Route exact path='/' element={< App />}></Route> 
+            <Route exact path='/projects' element={< Projects />}></Route> 
+            <Route exact path='/blog' element={< Blog />}></Route> 
+             https://www.geeksforgeeks.org/reactjs-router/# 
           </Routes>
         </Router>
+        */}
+        <Navbar />
         <Brand />
       </div>
       <center>
