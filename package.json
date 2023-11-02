@@ -1,5 +1,5 @@
 {
-  "homepage": "http://aalau.github.io/aalau.github.io",
+  "homepage": "http://aalau.github.io/",
   "scripts": {
     "start": "index.js",
     "predeploy": "npm run build",
