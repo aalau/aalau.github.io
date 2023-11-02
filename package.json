@@ -1,6 +1,9 @@
 {
+  "homepage": "http://aalau.github.io/aalau.github.io",
   "scripts": {
-    "start": "index.js"
+    "start": "index.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -10,5 +13,8 @@
     "@mui/material": "^5.14.7",
     "react-draggable": "^4.4.5",
     "react-router-dom": "^6.17.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.0.0"
   }
 }
