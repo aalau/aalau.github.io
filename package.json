@@ -1,0 +1,37 @@
+{
+  "homepage": "https://aalau.github.io",
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b master -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@fontsource/roboto": "^5.0.8",
+    "@mui/icons-material": "^5.14.7",
+    "@mui/material": "^5.14.7",
+    "framer-motion": "^10.16.4",
+    "react-draggable": "^4.4.5",
+    "react-icons": "^4.11.0",
+    "react-router-dom": "^6.17.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.0.0",
+    "node-sass": "^7.0.3",
+    "react-scripts": "^5.0.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
