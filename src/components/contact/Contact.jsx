@@ -1,50 +1,53 @@
-import React, { useState } from "react";
-import './contact.scss'
-//https://w3collective.com/react-contact-form/
-const Contact = () => {
+import React, { useState, useRef } from "react";
+import emailjs from '@emailjs/browser';
+import './contact.scss';
+
+export const Contact = () => {
+  const form = useRef();
+
+  const YOUR_SERVICE_ID = 'service_rk4ffie';
+  const YOUR_TEMPLATE_ID = 'template_8iut0dn';
+  const YOUR_PUBLIC_KEY = '0sSTcMEhc1RsHVlwH';
+
   const [status, setStatus] = useState("Submit");
-  const handleSubmit = async (e) => {
+
+  const sendEmail = async (e) => {
     e.preventDefault();
     setStatus("Sending...");
-    const { name, email, message } = e.target.elements;
-    let details = {
-      name: name.value,
-      email: email.value,
-      message: message.value,
-    };
-    let response = await fetch("http://localhost:5000/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(details),
-    });
-    setStatus("Submit");
-    let result = await response.json();
+    await emailjs.sendForm(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, form.current, YOUR_PUBLIC_KEY)
+      .then(function(response) {
+        console.log('SUCCESS!', response.status, response.text);
+        setStatus("Submit");
+      }, function(error) {
+        console.log('FAILED...', error);
+        setStatus("Error. Please try again later.");
+      });
+
     alert(result.status);
   };
+
   return (
-    <form onSubmit={handleSubmit} id="Contact" className="contactForm">
-      
+    <form ref={form} onSubmit={sendEmail}  id="Contact" className="contactForm">
       <div className="title">
         <h2>Have a question?</h2>
         <p>Reach out to me here and we can setup time to chat!</p>
       </div>
       <div className="textSubmit">
       <div className="nameWrapper">
-        <label htmlFor="name">Name:</label>
-        <input type="text" id="name" required />
+        <label htmlFor="name" >Name:</label>
+        <input type="text" name="user_name" required />
       </div>
       <div className="emailWrapper">
         <label htmlFor="email">Email:</label>
-        <input type="email" id="email" required />
+        <input type="email" name="user_email" required />
       </div>
       <div className="messageWrapper">
         <label htmlFor="message">Message:</label>
-        <textarea id="message" required />
+        <textarea name="message" required />
       </div>
       </div>
       <button type="submit" className="submitButton">{status}</button>
+      <input type="submit" value="Send" />
     </form>
   );
 };
