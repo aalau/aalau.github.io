@@ -11,9 +11,15 @@ export const Contact = () => {
 
   const [status, setStatus] = useState("Submit");
 
+  function clearform ()  {
+    document.getElementById("Contact").reset();
+  }
+
   const sendEmail = async (e) => {
     e.preventDefault();
     setStatus("Sending...");
+    alert(status);
+    try{
     await emailjs.sendForm(YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, form.current, YOUR_PUBLIC_KEY)
       .then(function(response) {
         console.log('SUCCESS!', response.status, response.text);
@@ -22,8 +28,13 @@ export const Contact = () => {
         console.log('FAILED...', error);
         setStatus("Error. Please try again later.");
       });
-
-    alert(result.status);
+    }
+    catch(error){
+      console.log(error);
+      alert("error submitting. Please reach out by email!")
+    }
+    alert(status);
+    clearform();
   };
 
   return (
@@ -46,8 +57,7 @@ export const Contact = () => {
         <textarea name="message" required />
       </div>
       </div>
-      <button type="submit" className="submitButton">{status}</button>
-      <input type="submit" value="Send" />
+      <button type="submit" value="Send" className="submitButton">{status}</button>
     </form>
   );
 };
