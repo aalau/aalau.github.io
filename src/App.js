@@ -34,8 +34,9 @@ const App = () => {
       <Resume />
       <Tako />
       <div className='foot'>
+      {/* These will become their own pages.
       <Blog />
-      {/*<Projects />*/}
+      <Projects />*/}
       <Contact />
       </div>
       </div>
