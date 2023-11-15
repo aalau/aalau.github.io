@@ -13,7 +13,7 @@ export default function Task({task}, deleteTask, changeTask){
       <div  className='Tako' key={Id}>
       <div className='header'>
       <button>{Story}-{Id}</button>
-      <input className='title' type='text' placeholder='New Task' value={Title} onChange={changeTask}/>
+      <input className='title' type='text' placeholder='New Task' value={Title} onChange={() => changeTask(this.Task.Id,)}/>
       <select id={Priority} name="selectedPriority" defaultValue='MED' onChange={changeTask}>
         <option value='XPD'>EXPEDITE</option>
         <option value='PRI'>PRIORITIZE</option>
@@ -38,7 +38,7 @@ export default function Task({task}, deleteTask, changeTask){
           <p className='description' placeholder='describe your task here...' contentEditable="true" onChange={changeTask}>{Description}</p>
         </div>
         <div name='footer'>
-          <button id='deleteTask' onClick={deleteTask}>Delete</button>
+          <button id='deleteTask' onClick={() => deleteTask(this.Task.Id)}>Delete</button>
         </div>
       </div>
       </div>

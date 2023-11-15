@@ -33,8 +33,15 @@ const Tako = () => {
     renderTasksBySwimlane(tasks,'PRG')
     renderTasksBySwimlane(tasks,'DON')
   };
+
+  //https://stackoverflow.com/questions/40795906/onchange-event-for-react-child-component-to-update-state
+  const onChange= (field, value) => {
+    // parent class change handler is always called with field name and value
+    this.setState({[field]: value});
+  };
   
-  const updateTask = (taskId, updatedTask) => {
+  const updateTask = event => {
+    
     // Create a copy of the tasks array
     const updatedTasks = tasks.map((task) => {
       // If the task ID matches the ID being updated, return the updated task; otherwise, return the original task
@@ -67,14 +74,15 @@ const Tako = () => {
     return (
       <>
         { swimlaneTasks.map(task => (
-            <Task key={task.Id} task={task} deleteTask={onDeleteTask} onChange={updateTask}></Task>
+            <Task key={task.Id} task={task} deleteTask={this.onDeleteTask.bind(this)} onChange={this.updateTask.bind(this)}></Task>
         ))}
       </>
     )
   }
 
   return (
-    <section className='Tako'>
+    <section className='app_Tako'>
+      <center>
       <div className='app_Tako-title'>Tako: Task Management</div>
       <Dialog className='app_Tako-Dialog-NewTask' open={open} onClose={handleClose}>
           <TaskForm input={input} addTask={addTask}></TaskForm>
@@ -106,7 +114,7 @@ const Tako = () => {
           {renderTasksBySwimlane(tasks,'DON')}
           </div></nav>
       </section>
-      
+      </center>
     </section>
   )
 };

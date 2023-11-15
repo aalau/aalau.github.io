@@ -20,20 +20,24 @@ const Navbar = () => {
   return (
     <nav className='app_navbar'>
       <div className='app_navbar-logo'>
-        <img className='logo' src={Image} alt="logo" />
+        <Link to="/">
+          <img className='logo' src={Image} alt="logo" />
+        </Link>
       </div>
-      <ul className='app_navbar-links'>
-        {links.map((item) => 
-        (<li className='app_flex p-text'
-        key={`link-${item}`}>
-          <div />
-          <a href={`#${item}`}>{item}</a>
-        </li>
-        ))}
-        <li>
-          <button className='app_navbar-button' onClick={handleClick}>Connect</button>
-        </li>
-      </ul>
+         <ul id="navigation" className='app_navbar-links'>
+             <li className='app_flex p-text'>
+                 <Link to="/Tako">Tako</Link>
+             </li>
+             <li className='app_flex p-text'>
+                 <Link to="/Projects">Projects</Link>
+             </li>
+             <li className='app_flex p-text'>
+                 <Link to="/Blog">Blog</Link>
+             </li>
+             <li>
+                <button className='app_navbar-button' onClick={handleClick}>Connect</button>
+            </li>
+        </ul>
     </nav>
   )
 }
