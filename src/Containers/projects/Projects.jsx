@@ -1,24 +1,47 @@
-import React from 'react'
-import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import ReactImg from '../../resources/aaon-lau-at-beach.jpg'
-import './projects.scss'
-import { CardContent, CardHeader } from '@mui/material';
+import React from 'react';
+import { Card, CardContent, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
+import './projects.scss';
 
+const projects = [
+  {
+    id: 1,
+    title: 'Project 1',
+    videoUrl: 'https://www.example.com/project1.mp4',
+    description: 'Description for Project 1.',
+  },
+  {
+    id: 2,
+    title: 'Project 2',
+    videoUrl: 'https://www.example.com/project2.mp4',
+    description: 'Description for Project 2.',
+  },
+  // Add more projects as needed
+];
 
 const Projects = () => {
   return (
-    <Card style={{ width: '18rem' }}>
-      <img orientation="top" src={'//:0'} />
-      <CardHeader>
-        <div>Card title</div>
-        <CardContent>
-          Some quick example text to build on the card title and make up the bulk of the card's content.
-        </CardContent>
-        <Button href="#">Go somewhere</Button>
-      </CardHeader>
-    </Card>
-  )
-}
+    <div style={{ display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap' }}>
+      {projects.map((project) => (
+        <Card key={project.id} style={{ maxWidth: 345, margin: '20px' }}>
+          <Link to={`/project/${project.id}`}>
+            <video width="100%" height="200" controls>
+              <source src={project.videoUrl} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                {project.title}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {project.description}
+              </Typography>
+            </CardContent>
+          </Link>
+        </Card>
+      ))}
+    </div>
+  );
+};
 
-export default Projects
+export default Projects;

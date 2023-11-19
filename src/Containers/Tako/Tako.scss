@@ -1,8 +1,17 @@
-.Tako {
+$font: 'Source Sans Pro', sans-serif;
+
+$mq-xs: 20em;
+$mq-sm: 30em;
+$mq-md: 54em;
+$mq-lg: 64em;
+$mq-xl: 76.5em;
+$mq-xxl: 114em;
+
+.app_Tako {
     font-family: "JetBrains Mono",monospace;
     background-color: var(--tako-main-color);
     border-color: var(--tako-border-color);
-    color: #FCFCFC;
+    color: var(--tako-main-color);
     border-style:double;
     border-radius: 10px;
     border-width: 5px;
@@ -10,8 +19,8 @@
     justify-content: space-between;
     border-spacing: 2px;
     margin-bottom: 15px;
-}
-.app_Tako-title {
+
+&-title {
     border-radius: 4px;
     border-width: 0;
     margin-top: 4px;
@@ -20,7 +29,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, ui-monospace;
     font-weight: 200;
 }
-.app_Tako-input {
+&-input {
     border-radius: 4px;
     border-width: 0;
     box-sizing: border-box;
@@ -47,7 +56,7 @@
         color: black;
     }
 }
-.app_Tako-button {
+&-button {
     align-items: center;
     appearance: none;
     background-color: #FCFCFD;
@@ -88,6 +97,7 @@
         box-shadow: #D6D6E7 0 3px 7px inset;
         transform: translateY(2px);
     }
+}
 }
 
 @media only screen and (max-width: 800px) {
