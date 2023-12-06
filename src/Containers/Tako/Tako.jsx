@@ -29,9 +29,9 @@ const Tako = () => {
   const addTask = (newTask) => {
     setTasks([...tasks, newTask]);
     //force re-render of swimlanes!
-    renderTasksBySwimlane(tasks,'TDO')
-    renderTasksBySwimlane(tasks,'PRG')
-    renderTasksBySwimlane(tasks,'DON')
+    renderTasksBySwimlane(tasks,'TDO');
+    renderTasksBySwimlane(tasks,'PRG');
+    renderTasksBySwimlane(tasks,'DON');
   };
 
   //https://stackoverflow.com/questions/40795906/onchange-event-for-react-child-component-to-update-state
@@ -40,12 +40,12 @@ const Tako = () => {
     this.setState({[field]: value});
   };
   
-  const updateTask = event => {
+  const updateTask = (id,updatedTask) => {
     
     // Create a copy of the tasks array
     const updatedTasks = tasks.map((task) => {
       // If the task ID matches the ID being updated, return the updated task; otherwise, return the original task
-      return task.Id === taskId ? updatedTask : task;
+      return task.Id === id ? updatedTask : task;
     });
 
     // Update the state with the modified tasks
@@ -62,6 +62,13 @@ const Tako = () => {
     setTasks(updatedTasks);
   }
 
+  const deleteById = id => {
+    setTasks(oldvalues => {
+      return oldvalues.filter((e) => e.Id == id)
+    })
+  }
+
+
   function takoTaskSetup(){
     return [  {'Id':'101', 'Title':'Create Full Task View', 'Story':'TAKO', 'Status':'TDO', 'Priority':'HGH', 'Description':'create view that opens up the whole task'},
               {'Id':'102', 'Title':'Color Coordinate Story', 'Story':'TAKO', 'Status':'TDO', 'Priority':'LOW', 'Description':'Make stories the row version of the status column, and show the difference between using colors'},
@@ -71,10 +78,14 @@ const Tako = () => {
   }
   function renderTasksBySwimlane(tasks, swimlane){
     const swimlaneTasks = tasks.filter(task => task.Status === swimlane);
+    console.debug('render tasks by swimlane');
+    
     return (
       <>
         { swimlaneTasks.map(task => (
-            <Task key={task.Id} task={task} deleteTask={this.onDeleteTask.bind(this)} onChange={this.updateTask.bind(this)}></Task>
+            <Task key={task.Id} task={task} deleteTask={deleteById} onChange={updateTask}></Task>
+            // when we put deletebyid(task.id) it will not render the tasks here.
+            
         ))}
       </>
     )

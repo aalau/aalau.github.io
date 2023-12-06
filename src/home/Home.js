@@ -3,6 +3,7 @@ import React from 'react'
 import { Tako, About, Features, Resume, Header, Footer } from '../Containers';
 import { Contact, Brand, Navbar } from '../components';
 import './Home.scss';
+import { Divider } from '@mui/material';
 
 
 const Home = () => {
@@ -19,10 +20,9 @@ const Home = () => {
               <Header />
             </div>
             <Resume />
+            <Divider sx={{ borderRadius: 2, margin: 7 }}/>
             <Tako />
-            <div className='foot'>
-              <Contact />
-            </div>
+            <Divider sx={{ borderRadius: 2, margin: 7 }} />
           </div>
         </center>
         <Footer />
