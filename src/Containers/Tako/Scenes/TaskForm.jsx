@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import './TaskForm.scss';
 
 function TaskForm({ input, addTask }) {
-    const [task, setTask] = useState({ title: input, description: '', status: 'BLG', priority: 'LOW' });
+    const [task, setTask] = useState({ title: input, description: '', story: '', status: 'BLG', priority: 'LOW' });
   
     const handleSubmit = (e) => {
       e.preventDefault();
+      console.debug(task);
       addTask(task); // Pass the new task to the parent component
-      setTask({ title: '', description: '', status: 'BLG', priority: 'LOW' }); // Clear the form
+      setTask({ title: '', description: '', story: '', status: 'BLG', priority: 'LOW' }); // Clear the form
     };
-  
+
     return (
       <form className='app_TaskForm' onSubmit={handleSubmit}>
         

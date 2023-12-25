@@ -1,6 +1,6 @@
 import React from 'react'
 import { Home } from './home';
-import { Blog, Projects, Tako } from './Containers';
+import { Blog, Projects, Tako, TakoFull, ProjectsFull } from './Containers';
 import { Article, Contact, Brand, Navbar } from './components';
 import { Routes, Route, Link } from 'react-router-dom';
 //import './resources';
@@ -15,15 +15,13 @@ const App = () => {
      <Routes>
         <Route path="/" element={<Home />}>
         </Route>
-        <Route path="/Tako" element={<Tako />}>
+        <Route path="/Tako" element={<TakoFull />}>
         </Route>
-        <Route path="/Projects" element={<Projects />}>
+        <Route path="/Projects" element={<ProjectsFull />}>
         </Route>
         <Route path="/Blog" element={<Blog />}>
         </Route>
         <Route path="/Blog/Article" element={<Article />}>
-        </Route>
-        <Route path="/Contact" element={<Contact />}>
         </Route>
     </Routes>
     </div>

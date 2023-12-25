@@ -40,16 +40,14 @@ const Tako = () => {
     this.setState({[field]: value});
   };
   
-  const updateTask = (id,updatedTask) => {
-    
-    // Create a copy of the tasks array
-    const updatedTasks = tasks.map((task) => {
-      // If the task ID matches the ID being updated, return the updated task; otherwise, return the original task
-      return task.Id === id ? updatedTask : task;
+  const updateTask = (updatedTask, id = updatedTask.Id) => {
+    setTasks((tasks) => {
+      const updatedTasks = tasks.map((task) => {
+        // If the task ID matches the ID being updated, return the updated task; otherwise, return the original task
+        task.Id === id ? updatedTask : task;
+      });
+      return updatedTasks;
     });
-
-    // Update the state with the modified tasks
-    setTasks(updatedTasks);
   };
 
   function handleSubmit(e) {
@@ -83,8 +81,9 @@ const Tako = () => {
     return (
       <>
         { swimlaneTasks.map(task => (
-            <Task key={task.Id} task={task} deleteTask={deleteById} onChange={updateTask}></Task>
+            <Task key={task.Id} task={task} deleteTask={() => deleteById(task.Id)} onChange={() => updateTask(Id)}></Task>
             // when we put deletebyid(task.id) it will not render the tasks here.
+            //() => this.handleClick(id)
             
         ))}
       </>
@@ -92,8 +91,9 @@ const Tako = () => {
   }
 
   return (
-    <section className='app_Tako'>
-      <center>
+    <center>
+      <section className='app_Tako'>
+      
       <div className='app_Tako-title'>Tako: Task Management</div>
       <Dialog className='app_Tako-Dialog-NewTask' open={open} onClose={handleClose}>
           <TaskForm input={input} addTask={addTask}></TaskForm>
@@ -125,8 +125,8 @@ const Tako = () => {
           {renderTasksBySwimlane(tasks,'DON')}
           </div></nav>
       </section>
-      </center>
-    </section>
+      </section>
+    </center>
   )
 };
 
