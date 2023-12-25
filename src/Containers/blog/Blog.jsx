@@ -5,23 +5,23 @@ import { Article } from '../../components';
 
 const articles = [
   {
-    id: 1,
-    title: 'Latest Article',
-    subtitle: 'Subtitle or Author Name',
+    id: 3,
+    title: 'Test Driven Development using Jest for React',
+    subtitle: 'Using LLMs to assist developers writing tests.',
     content:
       'This is the content of the latest article. It can contain paragraphs, images, and more.',
     imageUrl: 'https://example.com/latest-article-image.jpg',
   },
   {
     id: 2,
-    title: 'Previous Article 1',
-    subtitle: 'Subtitle or Author Name',
+    title: 'TAKO: Task Management',
+    subtitle: 'Building a task management system from UI to Backend',
     content:
       'This is the content of the first previous article. It can contain paragraphs, images, and more.',
     imageUrl: 'https://example.com/previous-article1-image.jpg',
   },
   {
-    id: 3,
+    id: 1,
     title: 'Previous Article 2',
     subtitle: 'Subtitle or Author Name',
     content:

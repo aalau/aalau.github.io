@@ -3,10 +3,10 @@
     margin-bottom: 2rem;
     padding: 1em;
     font-family: "Open Sans", "Helvetica Neue";
-    background-color: slategrey;
     max-width: 500px;
     border-radius: 2em; 
     text-align: right;
+    font-size: large;
 }
 .text-submit {
     text-align: right;
@@ -16,12 +16,12 @@
 .title{
     margin-top: 0.25rem;
     margin-bottom: 1rem;
-    color: whitesmoke;
+    color: slategray;
     flex-direction: column;
     
 }
 .nameWrapper, .emailWrapper, .messageWrapper{
-    color: whitesmoke;
+    color: slategray;
     margin: 5px;
     margin-bottom: 1rem;
     flex-direction: column;
@@ -48,8 +48,6 @@ button {
     margin-right: 4rem;
     text-align: center;
     align-items: center;
-    appearance: none;
-    background-color: #FCFCFD;
     border-radius: 4px;
     border-width: 0;
     box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
@@ -58,22 +56,17 @@ button {
     display: inline-flex;
     font-family: "JetBrains Mono",monospace;
     height: 32px;
-    line-height: 1;
     list-style: none;
     overflow: hidden;
     padding-left: 8px;
     padding-right: 8px;
     position: relative;
-    text-align: left;
-    text-decoration: none;
-    color: var(--grey-color);
     transition: box-shadow .15s,transform .15s;
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
     white-space: nowrap;
     will-change: box-shadow,transform;
-    font-size: 18px;
 
     &:focus {
         box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
