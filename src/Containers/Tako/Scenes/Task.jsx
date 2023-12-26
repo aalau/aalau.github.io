@@ -35,27 +35,40 @@ export default function Task({task, deleteTask, changeTask }){
     setDetailedDescription(value);
   };
 
-  const handleTaskUpdate = (target) => {
+  const handleTaskUpdate = (e) => {
+    console.debug(e);
+    console.debug(e.target);
+    changeTask(e);
     // Perform some modification to the task, for example, changing a property
-    let modifiedTask;
-    if(target == 'Title'){modifiedTask = { ...task, Title: target.value };}
-    if(target == 'Priority'){modifiedTask = { ...task, Priority: target.value };}
-    if(target == 'Status'){modifiedTask = { ...task, Status: target.value };}
-    if(target == 'Story'){modifiedTask = { ...task, Story: target.value };}
-    if(target == 'Description'){modifiedTask = { ...task, Story: target.value };}
-    // Call the updateTasks function to update the tasks array
-    changeTask(modifiedTask);
+    //changeTask(task => {return{...task,[event.target.name]: event.target.value}})
+    //changeTask(task.Id,event);
   };
 
+  const handleTitleChange = (e) => {
+    const newTask = {'Id':Id, 'Title':e.target.value, 'Story':Story, 'Status':Status, 'Priority':Priority, 'Description':Description}
+    changeTask(newTask)
+  }
+  const handlePriorityChange = (e) => {
+    const newTask = {'Id':Id, 'Title':Title, 'Story':Story, 'Status':Status, 'Priority':e.target.value, 'Description':Description}
+    changeTask(newTask)
+  }
+  const handleStatusChange = (e) => {
+    const newTask = {'Id':Id, 'Title':Title, 'Story':Story, 'Status':e.target.value, 'Priority':Priority, 'Description':Description}
+    changeTask(newTask)
+  }
+  const handleDescriptionChange = (e) => {
+    const newTask = {'Id':Id, 'Title':Title, 'Story':Story, 'Status':Status, 'Priority':Priority, 'Description':e.target.value}
+    changeTask(newTask)
+  }
 
   return (
     <Card className='task' key={Id}>
       <span className='header'>
       <Chip className='story' label={Story+"-"+Id}  onClick={handleOpen}></Chip>
-      <input className='title' type='text' placeholder='New Task' value={Title} onChange={handleTaskUpdate}/>
+      <input className='title' type='text' placeholder='New Task' value={Title} onChange={handleTitleChange}/>
       </span>
         <div>
-        <Select id={Priority} size='small' name="selectedPriority" defaultValue={Priority} onChange={handleTaskUpdate}>
+        <Select id={Priority} size='small' name="selectedPriority" defaultValue={Priority} onChange={handlePriorityChange}>
           <MenuItem value='XPD'>EXPEDITE</MenuItem>
           <MenuItem value='PRI'>PRIORITIZE</MenuItem>
           <MenuItem value='HGH'>HIGH</MenuItem>
@@ -66,7 +79,7 @@ export default function Task({task, deleteTask, changeTask }){
         <div className='body'>
           <label>
             Status 
-            <Select id={Status} size='small' name="selectedStatus" defaultValue={Status} onChange={handleTaskUpdate}>
+            <Select id={Status} size='small' name="selectedStatus" defaultValue={Status} onChange={handleStatusChange}>
               <MenuItem value='BLG'>Backlog</MenuItem>
               <MenuItem value='TDO'>To Do</MenuItem>
               <MenuItem value='PRG'>In Progress</MenuItem>
@@ -75,10 +88,10 @@ export default function Task({task, deleteTask, changeTask }){
             </Select>
           </label>
           <div>
-            <Typography className='description' placeholder='describe your task here...' contentEditable="true" onChange={handleTaskUpdate}>{Description}</Typography>
+            <Typography className='description' placeholder='describe your task here...' contentEditable="true" onChange={handleDescriptionChange}>{Description}</Typography>
           </div>
           <div name='footer'>
-            <Button id='deleteTask' onClick={() => deleteTask(this.Task.Id)}>Delete</Button>
+            <Button id='deleteTask' onClick={deleteTask}>Delete</Button>
           </div>
           </div>
           </div>
@@ -92,9 +105,9 @@ export default function Task({task, deleteTask, changeTask }){
           <div>
             <Stack direction="row">
               <Chip className='story' label={Story+"-"+Id}  onClick={handleClose} flexItem></Chip>
-              <input className='title' type='text' placeholder='New Task' value={Title} onChange={handleTaskUpdate}/>
+              <input className='title' type='text' placeholder='New Task' value={Title} onChange={handleTitleChange}/>
               <Divider orientation="vertical" flexItem/> 
-              <Select id={Priority} size='small' name="selectedPriority" defaultValue={Priority} onChange={handleTaskUpdate}>
+              <Select id={Priority} size='small' name="selectedPriority" defaultValue={Priority} onChange={handlePriorityChange}>
                 <MenuItem value='XPD'>EXPEDITE</MenuItem>
                 <MenuItem value='PRI'>PRIORITIZE</MenuItem>
                 <MenuItem value='HGH'>HIGH</MenuItem>
@@ -104,7 +117,7 @@ export default function Task({task, deleteTask, changeTask }){
               </Select>
               <label>
                 Status 
-                <Select id={Status} size='small' name="selectedStatus" defaultValue={Status} onChange={handleTaskUpdate}>
+                <Select id={Status} size='small' name="selectedStatus" defaultValue={Status} onChange={handleStatusChange}>
                   <MenuItem value='BLG'>Backlog</MenuItem>
                   <MenuItem value='TDO'>To Do</MenuItem>
                   <MenuItem value='PRG'>In Progress</MenuItem>

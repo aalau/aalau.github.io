@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Tako.scss'
 import Task from './Scenes/Task.jsx'
 import TaskForm from './Scenes/TaskForm.jsx'
@@ -21,17 +21,15 @@ const Tako = () => {
   
   function getNewId() {
     const myId = nextID;
-    setNextId(1 + myId);
+    setNextId(myId => myId + 1);
     return myId;
   };
   //const releaseId = (task) => {}; todo: memory management!
   
   const addTask = (newTask) => {
     setTasks([...tasks, newTask]);
-    //force re-render of swimlanes!
-    renderTasksBySwimlane(tasks,'TDO');
-    renderTasksBySwimlane(tasks,'PRG');
-    renderTasksBySwimlane(tasks,'DON');
+    //force re-render of swimlanes
+    
   };
 
   //https://stackoverflow.com/questions/40795906/onchange-event-for-react-child-component-to-update-state
@@ -40,14 +38,17 @@ const Tako = () => {
     this.setState({[field]: value});
   };
   
-  const updateTask = (updatedTask, id = updatedTask.Id) => {
+  function changeTask (updatedTask, Id=updatedTask.Id){
+    // changeTask(task => {return{...task,[event.target.name]: event.target.value}})
     setTasks((tasks) => {
       const updatedTasks = tasks.map((task) => {
+        
         // If the task ID matches the ID being updated, return the updated task; otherwise, return the original task
-        task.Id === id ? updatedTask : task;
+        return task.Id === Id ? updatedTask : task;
       });
       return updatedTasks;
     });
+    
   };
 
   function handleSubmit(e) {
@@ -55,14 +56,9 @@ const Tako = () => {
     handleClickOpen();
   }
 
-  function onDeleteTask(task) {
-    const updatedTasks = [...tasks].filter((e) => e.Id !== task.Id)
-    setTasks(updatedTasks);
-  }
-
   const deleteById = id => {
     setTasks(oldvalues => {
-      return oldvalues.filter((e) => e.Id == id)
+      return oldvalues.filter((e) => e.Id != id)
     })
   }
 
@@ -74,20 +70,30 @@ const Tako = () => {
               {'Id':'104', 'Title':'Build MVP with React', 'Story':'TAKO', 'Status':'DON', 'Priority':'PRI', 'Description':'Build the MVP that shows changes in state based on user input'}
             ]
   }
-  function renderTasksBySwimlane(tasks, swimlane){
-    const swimlaneTasks = tasks.filter(task => task.Status === swimlane);
-    console.debug('render tasks by swimlane');
-    
-    return (
-      <>
-        { swimlaneTasks.map(task => (
-            <Task key={task.Id} task={task} deleteTask={() => deleteById(task.Id)} onChange={() => updateTask(Id)}></Task>
-            // when we put deletebyid(task.id) it will not render the tasks here.
-            //() => this.handleClick(id)
-            
-        ))}
-      </>
-    )
+  function renderTasksBySwimlane(swimlane){
+    if (!tasks) {
+      console.debug('Tasks array is undefined');
+      return null; // or you can return some default content or an empty array
+    }
+    console.debug(tasks)
+      const swimlaneTasks = tasks.filter((t) => 
+      {
+        if (typeof t === 'undefined'){
+          console.debug('undefined task: '+ t)
+          return false;
+        }
+        return (t.Status === swimlane)
+      }); //this is our error. tasks is undefined here
+      console.debug('render tasks by swimlane ' + swimlane + ': ' + swimlaneTasks);
+
+      return (
+        <>
+          { swimlaneTasks.map(task => (
+              <Task key={task.Id} task={task} deleteTask={() => deleteById(task.Id)} changeTask={(e) => changeTask(e)}></Task>
+              
+          ))}
+        </>
+      )
   }
 
   return (
@@ -115,14 +121,14 @@ const Tako = () => {
      
       <section className='app_Tako-DisplayContent'>
         <nav className='app_Tako-ToDo'>To Do<div id='TDO'>
-            {renderTasksBySwimlane(tasks,'TDO')}
+          {renderTasksBySwimlane('TDO')}
           </div>
         </nav>
         <nav className='app_Tako-InProgress'>In Progress<div id='PRG'>
-          {renderTasksBySwimlane(tasks,'PRG')}
+          {renderTasksBySwimlane('PRG')}
           </div></nav>
         <nav className='app_Tako-Done'>Done<div id='DON'>
-          {renderTasksBySwimlane(tasks,'DON')}
+          {renderTasksBySwimlane('DON')}
           </div></nav>
       </section>
       </section>
