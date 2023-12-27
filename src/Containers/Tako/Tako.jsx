@@ -56,6 +56,10 @@ const Tako = () => {
     handleClickOpen();
   }
 
+  function handleInput() {
+    setInput("");
+  }
+
   const deleteById = id => {
     setTasks(oldvalues => {
       return oldvalues.filter((e) => e.Id != id)
@@ -64,10 +68,11 @@ const Tako = () => {
 
 
   function takoTaskSetup(){
-    return [  {'Id':'101', 'Title':'Create Full Task View', 'Story':'TAKO', 'Status':'TDO', 'Priority':'HGH', 'Description':'create view that opens up the whole task'},
+    return [  {'Id':'101', 'Title':'Create Full Task View', 'Story':'TAKO', 'Status':'DON', 'Priority':'HGH', 'Description':'create view that opens up the whole task'},
               {'Id':'102', 'Title':'Color Coordinate Story', 'Story':'TAKO', 'Status':'TDO', 'Priority':'LOW', 'Description':'Make stories the row version of the status column, and show the difference between using colors'},
               {'Id':'103', 'Title':'Allow multiple Stories', 'Story':'TAKO', 'Status':'PRG', 'Priority':'PRI', 'Description':'Based on project, we can have different stories'},
-              {'Id':'104', 'Title':'Build MVP with React', 'Story':'TAKO', 'Status':'DON', 'Priority':'PRI', 'Description':'Build the MVP that shows changes in state based on user input'}
+              {'Id':'104', 'Title':'Build MVP with React', 'Story':'TAKO', 'Status':'DON', 'Priority':'PRI', 'Description':'Build the MVP that shows changes in state based on user input'},
+              {'Id':'105', 'Title':'Build backend for Tako, Projects, and Blog','Story':'SITE','Status':'TDO','Priority':'MED','Description':'Build a database that updates based on user input for TAKO, Projects, and Blog, specifically for new tasks, comments on articles, and data for each.'}
             ]
   }
   function renderTasksBySwimlane(swimlane){
@@ -102,7 +107,7 @@ const Tako = () => {
       
       <div className='app_Tako-title'>Tako: Task Management</div>
       <Dialog className='app_Tako-Dialog-NewTask' open={open} onClose={handleClose}>
-          <TaskForm input={input} addTask={addTask}></TaskForm>
+          <TaskForm input={input} addTask={addTask} onSubmit={handleInput}></TaskForm>
       </Dialog>
       <div className='Input'>
         <form onSubmit={handleSubmit}>
