@@ -1,6 +1,4 @@
-#home {
 
-}
 .app_header{
     display: inline flex;
     flex: 1;
@@ -18,6 +16,7 @@
     div {
         font-size: 3vw;
         padding-bottom: 1rem;
+        font-family: var(--detail-font);
     }
 
     h2 {
