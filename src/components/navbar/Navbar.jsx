@@ -29,12 +29,12 @@ const Navbar = () => {
              <li className='app_flex p-text'>
                  <Link to="/Tako">Tako</Link>
              </li>
-             <li className='app_flex p-text'>
+             {/*<li className='app_flex p-text'>
                  <Link to="/Projects">Projects</Link>
              </li>
              <li className='app_flex p-text'>
                  <Link to="/Blog">Blog</Link>
-             </li>
+  </li>*/}
              <li className='app_flex p-button'>
                 <Contact className='app_navbar-button'></Contact>
             </li>

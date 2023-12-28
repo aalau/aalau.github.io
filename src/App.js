@@ -1,7 +1,7 @@
 import React from 'react'
 import { Home } from './home';
-import { Blog, Projects, Tako, TakoFull, ProjectsFull } from './Containers';
-import { Article, Contact, Brand, Navbar } from './components';
+import { TakoFull, ProjectsFull, BlogFull} from './Containers';
+import { Article } from './components';
 import { Routes, Route, Link } from 'react-router-dom';
 //import './resources';
 import './App.scss';
@@ -19,7 +19,7 @@ const App = () => {
         </Route>
         <Route path="/Projects" element={<ProjectsFull />}>
         </Route>
-        <Route path="/Blog" element={<Blog />}>
+        <Route path="/Blog" element={<BlogFull />}>
         </Route>
         <Route path="/Blog/Article" element={<Article />}>
         </Route>

@@ -23,7 +23,7 @@ const Home = () => {
             <Divider sx={{ borderRadius: 2, margin: 7 }}/>
             <Tako />
             <Divider sx={{ borderRadius: 2, margin: 7 }} />
-            <Projects />
+            {/*<Projects />*/}
           </div>
         </center>
         <Footer />
