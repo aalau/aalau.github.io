@@ -1,0 +1,21 @@
+priorities:
+
+1. filling out the website
+2. making it all look good
+
+Task 1: Put in Tako and/or Task Manager
+	Step 1: create input boxes and submit box
+	Step 2: take submission and store it
+	Step 3: display submission in a block
+	Step 4: add columns for idea, in-progress, done, etc.
+	Nice to haves
+	Step 5: allow block to be draggable between columns
+	Step 6: add drop down on each for description with dates/progression (this goes before that)
+	Step 7: add linking arrows between tasks to show progression
+	Step 8: add timeline view
+Task 2: Put in C# project
+Task 3: Add contact form
+Task 4: update buttons
+Task 5: add blog/writing
+Task 6: Refactor/any new ideas & make sure it looks good in all sizes
+Task 7: Add image and frames
