@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0d741278.css",
+    "main.js": "/static/js/main.9187761d.js",
+    "static/media/aaron-lau-in-center-cropped.jpg": "/static/media/aaron-lau-in-center-cropped.28a182db7b93bd96f98e.jpg",
+    "static/media/A.png": "/static/media/A.6fc61d1b7934c54b4c97.png",
+    "index.html": "/index.html",
+    "main.0d741278.css.map": "/static/css/main.0d741278.css.map",
+    "main.9187761d.js.map": "/static/js/main.9187761d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0d741278.css",
+    "static/js/main.9187761d.js"
+  ]
+}
