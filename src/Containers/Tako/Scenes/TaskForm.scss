@@ -1,0 +1,62 @@
+.app_TaskForm{
+    font-family: "JetBrains Mono",monospace;
+    background-color: var(--tako-main-color);
+    color: #FCFCFC;
+    justify-content: space-between;
+    border-color: var(--tako-border-color);
+    display: flex;
+    flex-direction: column;
+    width: 25em;
+    height: 22em;
+
+    border-spacing: 2px;
+    border-width: 5px;
+    border-style:double;
+}
+.app_TaskForm-title{
+    height: 1.5em;
+    font-size: x-large;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1em;
+    margin-left: 1em;
+}
+.app_TaskForm-input{
+    background-color: whitesmoke; 
+    color: var(--tako-main-color);
+    border-style: hidden;
+    border-radius: 2px;
+    margin-left: 4px;
+    &:focus{
+        color: black;
+    }
+}
+.app_TaskForm-select{
+    height: 1.5em;
+    font-size: medium;
+    display: flex;
+    margin-left: 1em;
+    width: 6em;
+}
+.app_TaskForm-textarea{
+    height: 12rem;
+    font-size: medium;
+    display: flex;
+    width: 22rem;
+    justify-content: center;
+    margin: 1em;
+}
+.app_TaskForm-Button{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1em;
+    margin-right: 1em;
+    &:focus{
+        color: var(--secondary-color);
+    }
+}
+.app_TaskForm-Footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
