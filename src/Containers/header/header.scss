@@ -1,0 +1,45 @@
+
+.app_header{
+    display: inline flex;
+    flex: 1;
+    align-self: flex-start;
+    font-size: large;
+    padding: 0.1rem 0.1rem 0.1rem 4rem;
+    
+
+    h1 {
+        font-size: 8vw;
+        padding: 6rem 0 0 0;
+        font-family: var(--title-style-font);
+    }
+
+    div {
+        font-size: 3vw;
+        padding-bottom: 1rem;
+        font-family: var(--detail-font);
+    }
+
+    h2 {
+        font-size: 2vw;
+        font-weight: 200;
+        margin-top: 1vw;
+    }
+
+}
+.inline {
+    overflow: hidden;
+    width: 100%;
+    letter-spacing: 1px;
+    padding-top: 1rem;
+}
+
+.text {
+    text-align: center;
+    float: left;
+    height: 3vw;
+    padding: 0 8px 2.5rem 0;
+    
+}
+
+
+
